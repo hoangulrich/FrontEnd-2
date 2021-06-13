@@ -1,2 +1,2 @@
-#LandingPage Template
-Web page template using bootstrap 5
+# LandingPage Template <br />
+Responsive Front-end Web page template using bootstrap 5
