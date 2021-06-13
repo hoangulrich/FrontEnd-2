@@ -1,2 +1,3 @@
-# LandingPage Template <br />
-Responsive Front-end Web page template using bootstrap 5
+## LandingPage Template <br />
+Go to https://hoangulrich.github.io/FrontEnd-2/
+Techstack: Bootstrap5, html/css
