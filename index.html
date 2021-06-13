@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="style.css">
     <title>Frontend Template</title>
 </head>
@@ -40,7 +41,7 @@
                 <div>
                     <h1>Become a <span class="text-warning">Web Developer</span></h1>
                     <p class="lead my-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae, tempora, nam consequatur debitis adipisci odit perferendis vero aspernatur optio molestiae saepe ratione et veritatis.</p>
-                    <button class="btn btn-primary btn-lg">Start The Enrollment</button>
+                    <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#enroll">Start The Enrollment</button>
                 </div>
                 <img class="img-fluid w-50 d-none d-sm-block" src="img/showcase.svg" alt="">
             </div>
@@ -54,7 +55,7 @@
                 <h3 class="mb-3 mb-md-0">Sign Up For Our Newsletter</h3>
                 <div class="input-group news-input">
                     <input type="text" class="form-control" placeholder="Enter Email">
-                    <button class="btn btn-dark btn-lg" type="button">Button</button>
+                    <button class="btn btn-dark btn-lg" type="button">Sign Up</button>
                 </div>
             </div>
         </div>
@@ -278,8 +279,102 @@
     </section>
 
     <!-- CONTACT and MAP-->
+    <section class="p-5">
+        <div class="container">
+            <div class="row g-4">
+               <div class="col-md">
+                   <h2 class="text-center mb-4">Contact Info</h2>
+                   <ul class="list-group list-group-flush lead">
+                       <li class="list-group-item">
+                           <span class="fw-bold">Main Location:</span> 50 Main St Boston MA
+                       </li>
+                       <li class="list-group-item">
+                           <span class="fw-bold">Enrollment Phone:</span> (555) 555-5555
+                       </li>
+                       <li class="list-group-item">
+                           <span class="fw-bold">Student Phone:</span> (999) 999-9999
+                       </li>
+                       <li class="list-group-item">
+                           <span class="fw-bold">Enrollment Email:</span> enroll@frontend.test
+                       </li>
+                       <li class="list-group-item">
+                           <span class="fw-bold">Student Email:</span> student@frontend.test
+                       </li>
+                   </ul>
+               </div>
+               <div class="col-md">
+                    <div id="map"></div>
+               </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- BOOTSTRAP CDN-->
+    <!-- FOOTER -->
+    <footer class="p-5 bg-dark text-white text-center position-relative">
+        <div class="container">
+            <p class="lead">Copyright &copy; 2021 Frontend Bootcamp</p>
+            <a href="#" class="position-absolute bottom-0 end-0 p-5">
+                <i class="bi bi-arrow-up-circle h1"></i>
+            </a>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal fade" id="enroll" tabindex="-1" aria-labelledby="enrollLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="enrollLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="lead">Fill out this form and we will get back to you</p>
+                    <form>
+                        <div class="mb-3">
+                            <label for="first-name" class="col-form-label">
+                                First Name:
+                            </label>
+                            <input type="text" class="form-control" id="first-name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="last-name" class="col-form-label">
+                                Last Name:
+                            </label>
+                            <input type="text" class="form-control" id="last-name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="col-form-label">
+                                Email:
+                            </label>
+                            <input type="email" class="form-control" id="email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="col-form-label">
+                                Phone:
+                            </label>
+                            <input type="tel" class="form-control" id="phone">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOOTSTRAP AND MAPBOX CDN-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoiaG9hbmd1bHJpY2giLCJhIjoiY2twdXg0bGxnMWtrNTJ2cGE0ajFlYmszdiJ9.Z2IiTV8LEiGd5JSBVJnNKw';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center:[-71.060982, 42.35725],
+            zoom: 18
+        });
+    </script>
 </body>
 </html>
